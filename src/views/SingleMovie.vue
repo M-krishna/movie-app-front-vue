@@ -3,8 +3,8 @@
         <MovieCard :movie="movieData"/>
         <div class="movie-details">
             <h1>{{ movieData.name }}</h1>
-            <h2>{{ movieData.year}}</h2>
-            <h2>{{ movieData.genre.join(" / ")}}</h2>
+            <h2>{{ movieData.year }}</h2>
+            <h2>{{ getGenre }}</h2>
             <h2>{{ movieData.rating }}</h2>
         </div>
     </div>
@@ -43,6 +43,14 @@ export default {
             } catch(err) {
                 console.log(err)
             }
+        }
+    },
+    computed: {
+        getGenre() {
+            if(Object.keys(this.movieData).length){
+                return this.movieData.genre.join(" / ")
+            }
+            return ''  
         }
     }
 }
