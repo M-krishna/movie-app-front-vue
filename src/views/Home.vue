@@ -1,6 +1,14 @@
 <template>
   <div class="home">
-    <MovieCard v-for="movie in result" :key="movie._id" :movie="movie" />
+    <router-link 
+      v-for="movie in result" 
+      :key="movie._id" 
+      :to="{ name: 'SingleMovie', params: {movieId: movie._id, movie: movie}}"
+    >
+    <MovieCard  
+      :movie="movie"
+    />
+    </router-link>
   </div>
 </template>
 
@@ -33,6 +41,11 @@ export default {
         this.result = response.data
     } catch(err) {
         console.log(err)
+    }
+  },
+  methods: {
+    showMovie(e){
+      console.log(e)
     }
   }
 };
