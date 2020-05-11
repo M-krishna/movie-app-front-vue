@@ -14,9 +14,7 @@
 </style>
 
 <script>
-import axios from "axios";
-
-import config from "../services/config"
+import { getAllMovies } from "../services/MovieService"
 import MovieCard from "../components/MovieCard"
 
 export default {
@@ -30,13 +28,12 @@ export default {
     };
   },
   async beforeCreate() {
-    await axios.get(`${config.BASE_URL}/movies`)
-      .then(response => {
-        this.result = response.data.data
-      })
-      .catch(err => {
+    try {
+        const response = await getAllMovies()
+        this.result = response.data
+    } catch(err) {
         console.log(err)
-      })
+    }
   }
 };
 </script>
