@@ -1,15 +1,17 @@
 <template>
-  <div class="home">
-    <router-link 
-      v-for="movie in result" 
-      :key="movie._id" 
-      :to="{ name: 'SingleMovie', params: {movieId: movie._id, movie: movie}}"
-    >
-    <MovieCard  
-      :movie="movie"
-    />
-    </router-link>
-  </div>
+  <b-container>
+    <div class="home">
+      <router-link 
+        v-for="movie in result" 
+        :key="movie._id" 
+        :to="{ name: 'SingleMovie', params: {movieId: movie._id, movie: movie}}"
+      >
+      <MovieCard  
+        :movie="movie"
+      />
+      </router-link>
+    </div>
+  </b-container>
 </template>
 
 <style scoped>

@@ -1,13 +1,15 @@
 <template>
-    <div class="single-movie">
-        <MovieCard :movie="movieData"/>
-        <div class="movie-details">
-            <h1>{{ movieData.name }}</h1>
-            <h2>{{ movieData.year }}</h2>
-            <h2>{{ getGenre }}</h2>
-            <h2>{{ movieData.rating }}</h2>
+    <b-container>
+        <div class="single-movie">
+            <MovieCard :movie="movieData"/>
+            <div class="movie-details">
+                <h1>{{ movieData.name }}</h1>
+                <h2>{{ movieData.year }}</h2>
+                <h2>{{ getGenre }}</h2>
+                <h2>{{ movieData.rating }}</h2>
+            </div>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <script>
