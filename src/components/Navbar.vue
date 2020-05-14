@@ -37,8 +37,7 @@ export default {
     }
   },
   mounted () {
-    Eventbus.$on('logged-in', (payload) => {
-      console.log(payload)
+    Eventbus.$on('logged-in', () => {
       this.isLoggedIn = true
     })
     this.checkLoggedIn()

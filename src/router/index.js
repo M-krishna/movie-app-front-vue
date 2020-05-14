@@ -1,9 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import SingleMovie from "../views/SingleMovie.vue"
-import Login from "../views/Login"
-import Dashboard from '../views/Dashboard'
 
 Vue.use(VueRouter);
 
@@ -25,19 +22,39 @@ const routes = [
   {
     path: "/movie/:movieId",
     name: "SingleMovie",
-    component: SingleMovie,
+    component: () => import('../views/SingleMovie'),
     props: true
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: () => import('../views/Login')
   },
   {
     path: "/app/dashboard",
     name: "Dashboard",
-    component: Dashboard,
-    beforeEnter: isAuthenticated
+    component: () => import('../views/Dashboard'),
+    beforeEnter: isAuthenticated,
+    children: [
+      {
+        path: "",
+        name: "Dashboard",
+        redirect: { name: "Movies" }
+      },
+      {
+        path: "/app/dashboard/movies",
+        name: "Movies",
+        component: () => import('../views/DashboardMovies'),
+        children: [
+          {
+            path: "/app/dashboard/movie/:movieId",
+            name: "MovieDetail",
+            component: () => import('../views/MovieDetail'),
+            props: true
+          }
+        ]
+      }
+    ]
   },
   {
     path: "*",
