@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import Eventbus from '../Eventbus';
 import { login } from '../services/AuthService';
 
 export default {
@@ -40,6 +41,11 @@ export default {
                 email: "",
                 password: ""
             }
+        }
+    },
+    beforeMount () {
+        if(localStorage.getItem('userData')){
+            this.$router.push({ name: 'Dashboard' })
         }
     },
     methods: {
@@ -55,6 +61,7 @@ export default {
                     console.log("Invalid username/ppassword")
                 } else {
                     localStorage.setItem("userData", JSON.stringify(result.data))
+                    Eventbus.$emit('logged-in', result.data)
                     this.$router.push({ name: "Dashboard" })
                 }
             } catch (err){

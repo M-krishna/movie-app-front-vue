@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'Login' }">Login</router-link>
-    </div>
+    <Navbar />
     <router-view />
   </div>
 </template>
+
+<script>
+import Navbar from './components/Navbar'
+
+export default {
+  name: 'App',
+  components: {
+    Navbar
+  }
+}
+</script>
 
 <style>
 #app {
@@ -21,12 +29,21 @@
   padding: 30px;
 }
 
-#nav a {
+nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
+nav a:hover {
+  text-decoration: none;
+}
+
+nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.container {
+  margin-top: 20px;
 }
 </style>

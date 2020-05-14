@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import SingleMovie from "../views/SingleMovie.vue"
 import Login from "../views/Login"
-import AuthComponent from '../views/AuthComponent'
+import Dashboard from '../views/Dashboard'
 
 Vue.use(VueRouter);
 
@@ -34,9 +34,9 @@ const routes = [
     component: Login
   },
   {
-    path: "/dashboard",
+    path: "/app/dashboard",
     name: "Dashboard",
-    component: AuthComponent,
+    component: Dashboard,
     beforeEnter: isAuthenticated
   },
   {
