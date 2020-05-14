@@ -27,8 +27,9 @@ export default {
     grid-template-columns: 0.2fr 2fr;
     height: 100vh;
 }
-.source {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
+
+.side-bar {
+    border: 1px solid black;
+    margin: 2px;
 }
 </style>

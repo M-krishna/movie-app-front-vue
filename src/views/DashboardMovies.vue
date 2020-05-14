@@ -53,6 +53,8 @@ export default {
 .movies {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  border: 1px solid black;
+  margin: 2px;
+  height: 100vh;
 }
 </style>
